@@ -36,7 +36,7 @@ namespace sHospitalar
             this.labelIDUtente = new System.Windows.Forms.Label();
             this.utenteIDBox = new System.Windows.Forms.TextBox();
             this.searchButton = new System.Windows.Forms.Button();
-            this.gridResultadosPesquisa = new System.Windows.Forms.DataGrid();
+            this.gridResultadosPesquisa = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.gridResultadosPesquisa)).BeginInit();
             this.SuspendLayout();
             // 
@@ -82,17 +82,20 @@ namespace sHospitalar
             // 
             // gridResultadosPesquisa
             // 
-            this.gridResultadosPesquisa.DataMember = "";
-            this.gridResultadosPesquisa.HeaderForeColor = System.Drawing.SystemColors.ControlText;
-            this.gridResultadosPesquisa.Location = new System.Drawing.Point(25, 95);
+            this.gridResultadosPesquisa.AllowUserToAddRows = false;
+            this.gridResultadosPesquisa.AllowUserToDeleteRows = false;
+            this.gridResultadosPesquisa.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridResultadosPesquisa.Location = new System.Drawing.Point(12, 109);
             this.gridResultadosPesquisa.Name = "gridResultadosPesquisa";
-            this.gridResultadosPesquisa.Size = new System.Drawing.Size(531, 175);
+            this.gridResultadosPesquisa.ReadOnly = true;
+            this.gridResultadosPesquisa.Size = new System.Drawing.Size(401, 186);
             this.gridResultadosPesquisa.TabIndex = 5;
             // 
             // Criar_consulta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.gridResultadosPesquisa);
             this.Controls.Add(this.searchButton);
@@ -100,14 +103,19 @@ namespace sHospitalar
             this.Controls.Add(this.labelIDUtente);
             this.Controls.Add(this.labelNomeUtente);
             this.Controls.Add(this.utenteNameBox);
+            this.Location = new System.Drawing.Point(15, 15);
             this.Name = "Criar_consulta";
-            this.Text = "Criar_consulta";
             ((System.ComponentModel.ISupportInitialize)(this.gridResultadosPesquisa)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
         }
 
-        private System.Windows.Forms.DataGrid gridResultadosPesquisa;
+        private System.Windows.Forms.DataGridViewTextBoxColumn sexoColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nomeColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idadeColumn;
+
+        private System.Windows.Forms.DataGridView gridResultadosPesquisa;
 
         private System.Windows.Forms.TextBox utenteNameBox;
         private System.Windows.Forms.Label labelNomeUtente;

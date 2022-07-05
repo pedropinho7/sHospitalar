@@ -14,9 +14,16 @@ namespace sHospitalar
         private void criarUtenteButton_Click(object sender, EventArgs e)
         {
             db Database = new db();
+            if (!string.IsNullOrEmpty(utenteNameBox.Text) && !string.IsNullOrEmpty(sexBox.Text))
+            {
             Database.CriarUtente(utenteNameBox.Text, (DateTime.Now.Year - birthdayPicker.Value.Year), sexBox.Text);
-            MessageBox.Show($"{utenteNameBox.Text} adicionado aos utentes.");
+            MessageBox.Show($"Criado utente {utenteNameBox.Text}.");
             this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Dados inválidos. Pf confirma todos os dados antes de submeter novo utente.");
+            }
         }
     }
 }

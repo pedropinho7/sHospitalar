@@ -24,7 +24,9 @@ namespace sHospitalar
             {
                 dt = Database.PesquisarUtentePorID(gridResultadosPesquisa, utenteIDBox.Text);
             }
+
             gridResultadosPesquisa.DataSource = dt;
+            
 
             if (dt.Rows.Count == 0)
             {
