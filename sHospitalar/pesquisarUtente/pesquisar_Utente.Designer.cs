@@ -2,7 +2,7 @@
 
 namespace sHospitalar
 {
-    partial class Criar_consulta
+    partial class pesquisar_Utente
     {
         /// <summary>
         /// Required designer variable.
@@ -85,13 +85,14 @@ namespace sHospitalar
             this.gridResultadosPesquisa.AllowUserToAddRows = false;
             this.gridResultadosPesquisa.AllowUserToDeleteRows = false;
             this.gridResultadosPesquisa.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridResultadosPesquisa.Location = new System.Drawing.Point(12, 109);
+            this.gridResultadosPesquisa.Location = new System.Drawing.Point(12, 124);
             this.gridResultadosPesquisa.Name = "gridResultadosPesquisa";
             this.gridResultadosPesquisa.ReadOnly = true;
             this.gridResultadosPesquisa.Size = new System.Drawing.Size(401, 186);
             this.gridResultadosPesquisa.TabIndex = 5;
+            this.gridResultadosPesquisa.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridResultadosPesquisa_CellDoubleClick);
             // 
-            // Criar_consulta
+            // pesquisar_Utente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -104,7 +105,7 @@ namespace sHospitalar
             this.Controls.Add(this.labelNomeUtente);
             this.Controls.Add(this.utenteNameBox);
             this.Location = new System.Drawing.Point(15, 15);
-            this.Name = "Criar_consulta";
+            this.Name = "pesquisar_Utente";
             ((System.ComponentModel.ISupportInitialize)(this.gridResultadosPesquisa)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

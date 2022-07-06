@@ -5,9 +5,9 @@ using Data;
 
 namespace sHospitalar
 {
-    public partial class Criar_consulta : Form
+    public partial class pesquisar_Utente : Form
     {
-        public Criar_consulta()
+        public pesquisar_Utente()
         {
             InitializeComponent();
         }
@@ -17,7 +17,7 @@ namespace sHospitalar
             db Database = new db();
             DataTable dt = null;
             if (String.IsNullOrEmpty(utenteIDBox.Text))
-            { 
+            {
                 dt = Database.PesquisarUtentePorNome(gridResultadosPesquisa, utenteNameBox.Text);
             }
             else if (!String.IsNullOrEmpty(utenteIDBox.Text))
@@ -26,7 +26,7 @@ namespace sHospitalar
             }
 
             gridResultadosPesquisa.DataSource = dt;
-            
+
 
             if (dt.Rows.Count == 0)
             {
@@ -39,7 +39,28 @@ namespace sHospitalar
                     new Criar_Utente().ShowDialog();
                 }
             }
+        }
 
+        private void gridResultadosPesquisa_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+             int indexID = gridResultadosPesquisa.CurrentCell.RowIndex;
+             gridResultadosPesquisa.Rows[indexID].Selected = true;
+             var teste = gridResultadosPesquisa[0, indexID].Value;
+             int ID = (int)teste;
+
+
+             string titulo = "Nova consulta";
+             string message = "Criar nova consulta ?";
+                         
+             
+             MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+             var result = MessageBox.Show(message, titulo, buttons);
+             if (result == DialogResult.Yes)
+             {
+                 DatasDisponiveis datasDisponiveis = new DatasDisponiveis();
+                 datasDisponiveis.Show();
+                 this.Close();
+             }
         }
     }
 }

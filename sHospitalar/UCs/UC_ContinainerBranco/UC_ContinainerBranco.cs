@@ -10,18 +10,11 @@ using System.Windows.Forms;
 
 namespace sHospitalar
 {
-    public partial class MainPage : Form
+    public partial class UC_ContinainerBranco : UserControl
     {
-        public MainPage()
+        public UC_ContinainerBranco()
         {
             InitializeComponent();
-        }
-
-        private void CriarConsultaButton_Click(object sender, EventArgs e)
-        {
-            pesquisar_Utente pesquisarUtente = new pesquisar_Utente();
-            pesquisarUtente.Show();
-            this.Hide();
         }
     }
 }
