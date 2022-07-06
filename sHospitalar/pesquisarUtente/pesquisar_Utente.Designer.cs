@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel;
 
-namespace sHospitalar
+namespace sHospitalar.pesquisarUtente
 {
-    partial class pesquisar_Utente
+    partial class PesquisarUtente
     {
         /// <summary>
         /// Required designer variable.
@@ -105,7 +105,7 @@ namespace sHospitalar
             this.Controls.Add(this.labelNomeUtente);
             this.Controls.Add(this.utenteNameBox);
             this.Location = new System.Drawing.Point(15, 15);
-            this.Name = "pesquisar_Utente";
+            this.Name = "PesquisarUtente";
             ((System.ComponentModel.ISupportInitialize)(this.gridResultadosPesquisa)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

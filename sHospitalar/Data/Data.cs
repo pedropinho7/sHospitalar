@@ -1,21 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
-using System.Data;
 
-namespace Data
+namespace sHospitalar.Data
 {
-    public class db
+    public class Db
     {
         public string connectionString = "Server=(localdb)\\firstdb;Integrated Security=true;";
 
         public void CriarUtente(string nome, int age, string sexo)
         {
-            using (SqlConnection connection = new SqlConnection(this.connectionString))
+            using (var connection = new SqlConnection(this.connectionString))
             using (var command = new SqlCommand())
             {
                 connection.Open();
@@ -33,8 +29,8 @@ namespace Data
 
         public DataTable PesquisarUtentePorNome(DataGridView grid_result, string nome)
         {
-            using (DataTable dt = new DataTable("Utentes"))
-            using (SqlConnection connection = new SqlConnection(this.connectionString))
+            using (var dt = new DataTable("Utentes"))
+            using (var connection = new SqlConnection(this.connectionString))
             using (var command = new SqlCommand())
             {
                 connection.Open();
@@ -49,7 +45,7 @@ namespace Data
                 { // Yeah, procurar melhor maneira de fazer isto xD
                     command.CommandText = "Select * From Utentes Where 1=0";
                 }
-                SqlDataAdapter adapter = new SqlDataAdapter(command);
+                var adapter = new SqlDataAdapter(command);
                 adapter.Fill(dt);
                 //ADICIONEI ISTO RECENTEMENTE, SE HOUVER PROBLEMAS YEAH
                 command.Dispose();
@@ -57,16 +53,16 @@ namespace Data
             }
         }
 
-        public DataTable PesquisarUtentePorID(DataGridView grid_result, string ID)
+        public DataTable PesquisarUtentePorId(DataGridView gridResult, string id)
         {
-            using (DataTable dt = new DataTable("Utentes"))
-            using (SqlConnection connection = new SqlConnection(this.connectionString))
+            using (var dt = new DataTable("Utentes"))
+            using (var connection = new SqlConnection(this.connectionString))
             using (var command = new SqlCommand())
             {
                 connection.Open();
                 command.Connection = connection;
                 command.CommandText = "Select * From Utentes Where ID = @ID_input";
-                command.Parameters.AddWithValue("@ID_input", Convert.ToInt32(ID));
+                command.Parameters.AddWithValue("@ID_input", Convert.ToInt32(id));
                 SqlDataAdapter adapter = new SqlDataAdapter(command);
                 adapter.Fill(dt);
                 //ADICIONEI ISTO RECENTEMENTE, SE HOUVER PROBLEMAS YEAH

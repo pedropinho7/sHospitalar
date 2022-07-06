@@ -1,9 +1,9 @@
 ﻿using System;
 using System.ComponentModel;
 
-namespace sHospitalar
+namespace sHospitalar.Agenda
 {
-    partial class DatasDisponiveis
+    partial class Agenda
     {
         /// <summary>
         /// Required designer variable.
@@ -114,7 +114,7 @@ namespace sHospitalar
             this.anteriorButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.anteriorButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.anteriorButton.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.anteriorButton.Location = new System.Drawing.Point(763, 721);
+            this.anteriorButton.Location = new System.Drawing.Point(704, 733);
             this.anteriorButton.Name = "anteriorButton";
             this.anteriorButton.Size = new System.Drawing.Size(113, 38);
             this.anteriorButton.TabIndex = 6;
@@ -128,7 +128,7 @@ namespace sHospitalar
             this.seguinteButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.seguinteButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.seguinteButton.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.seguinteButton.Location = new System.Drawing.Point(923, 721);
+            this.seguinteButton.Location = new System.Drawing.Point(856, 733);
             this.seguinteButton.Name = "seguinteButton";
             this.seguinteButton.Size = new System.Drawing.Size(113, 38);
             this.seguinteButton.TabIndex = 7;
@@ -147,12 +147,14 @@ namespace sHospitalar
             this.labelMesAno.TabIndex = 10;
             this.labelMesAno.Text = "MES ANO";
             // 
-            // DatasDisponiveis
+            // Agenda
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(1073, 791);
+            this.ClientSize = new System.Drawing.Size(973, 775);
             this.Controls.Add(this.labelMesAno);
             this.Controls.Add(this.labelDomingo);
             this.Controls.Add(this.labelSabado);
@@ -165,8 +167,10 @@ namespace sHospitalar
             this.Controls.Add(this.labelTerca);
             this.Controls.Add(this.labelSegunda);
             this.Location = new System.Drawing.Point(15, 15);
-            this.Name = "DatasDisponiveis";
+            this.MaximizeBox = false;
+            this.Name = "Agenda";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Agenda_FormClosed);
             this.Load += new System.EventHandler(this.datas_disponiveis_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

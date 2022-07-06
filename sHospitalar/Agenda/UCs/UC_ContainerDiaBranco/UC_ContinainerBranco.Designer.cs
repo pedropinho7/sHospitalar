@@ -1,16 +1,13 @@
-﻿using System.ComponentModel;
-using System.Windows.Forms;
-
-namespace sHospitalar
+﻿namespace sHospitalar.Agenda.UCs.UC_ContainerDiaBranco
 {
-    partial class criar_Consulta
+    partial class UcContainerBranco
     {
-        /// <summary>
+        /// <summary> 
         /// Required designer variable.
         /// </summary>
-        private IContainer components = null;
+        private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
+        /// <summary> 
         /// Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
@@ -20,11 +17,10 @@ namespace sHospitalar
             {
                 components.Dispose();
             }
-
             base.Dispose(disposing);
         }
 
-        #region Windows Form Designer generated code
+        #region Component Designer generated code
 
         /// <summary>
         /// Required method for Designer support - do not modify
@@ -34,18 +30,17 @@ namespace sHospitalar
         {
             this.SuspendLayout();
             // 
-            // criar_Consulta
+            // UC_ContinainerBranco
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(298, 445);
-            this.Name = "criar_Consulta";
-            this.Text = "Escolher Horário";
-            this.Load += new System.EventHandler(this.criar_Consulta_Load);
+            this.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.Name = "UcContainerBranco";
+            this.Size = new System.Drawing.Size(121, 104);
             this.ResumeLayout(false);
         }
-
-        private System.Windows.Forms.Button button1;
 
         #endregion
     }

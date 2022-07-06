@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using sHospitalar.pesquisarUtente;
 
 namespace sHospitalar
 {
@@ -19,7 +20,7 @@ namespace sHospitalar
 
         private void CriarConsultaButton_Click(object sender, EventArgs e)
         {
-            pesquisar_Utente pesquisarUtente = new pesquisar_Utente();
+            PesquisarUtente pesquisarUtente = new PesquisarUtente();
             pesquisarUtente.Show();
             this.Hide();
         }

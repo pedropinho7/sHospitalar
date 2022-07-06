@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel;
 
-namespace sHospitalar
+namespace sHospitalar.criarUtente
 {
-    partial class Criar_Utente
+    partial class CriarUtente
     {
         /// <summary>
         /// Required designer variable.
@@ -110,7 +110,7 @@ namespace sHospitalar
             this.Controls.Add(this.birthdayPicker);
             this.Controls.Add(this.labelFullName);
             this.Controls.Add(this.utenteNameBox);
-            this.Name = "Criar_Utente";
+            this.Name = "CriarUtente";
             this.Text = "Criar novo utente";
             this.ResumeLayout(false);
             this.PerformLayout();

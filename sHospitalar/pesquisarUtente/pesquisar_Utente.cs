@@ -1,29 +1,30 @@
 ﻿using System;
 using System.Data;
 using System.Windows.Forms;
-using Data;
+using sHospitalar.criarUtente;
+using sHospitalar.Data;
 
-namespace sHospitalar
+namespace sHospitalar.pesquisarUtente
 {
-    public partial class pesquisar_Utente : Form
+    public partial class PesquisarUtente : Form
     {
-        public static int static_ID;
-        public pesquisar_Utente()
+        public static int StaticId;
+        public PesquisarUtente()
         {
             InitializeComponent();
         }
 
         public void searchButton_Click(object sender, EventArgs e)
         {
-            db Database = new db();
+            Db database = new Db();
             DataTable dt = null;
-            if (String.IsNullOrEmpty(utenteIDBox.Text))
+            if (string.IsNullOrEmpty(utenteIDBox.Text))
             {
-                dt = Database.PesquisarUtentePorNome(gridResultadosPesquisa, utenteNameBox.Text);
+                dt = database.PesquisarUtentePorNome(gridResultadosPesquisa, utenteNameBox.Text);
             }
-            else if (!String.IsNullOrEmpty(utenteIDBox.Text))
+            else if (!string.IsNullOrEmpty(utenteIDBox.Text))
             {
-                dt = Database.PesquisarUtentePorID(gridResultadosPesquisa, utenteIDBox.Text);
+                dt = database.PesquisarUtentePorId(gridResultadosPesquisa, utenteIDBox.Text);
             }
 
             gridResultadosPesquisa.DataSource = dt;
@@ -31,35 +32,35 @@ namespace sHospitalar
 
             if (dt.Rows.Count == 0)
             {
-                string titulo = "Não foram encontrados resultados.";
-                string message = "Criar novo utente?";
-                MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+                var titulo = "Não foram encontrados resultados.";
+                var message = "Criar novo utente?";
+                var buttons = MessageBoxButtons.YesNo;
                 var result = MessageBox.Show(message, titulo, buttons);
                 if (result == DialogResult.Yes)
                 {
-                    new Criar_Utente().ShowDialog();
+                    new CriarUtente().ShowDialog();
                 }
             }
         }
 
         private void gridResultadosPesquisa_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-             int indexID = gridResultadosPesquisa.CurrentCell.RowIndex;
-             gridResultadosPesquisa.Rows[indexID].Selected = true;
-             var teste = gridResultadosPesquisa[0, indexID].Value;
-             int ID = (int)teste;
-             static_ID = ID;
+             var indexId = gridResultadosPesquisa.CurrentCell.RowIndex;
+             gridResultadosPesquisa.Rows[indexId].Selected = true;
+             var teste = gridResultadosPesquisa[0, indexId].Value;
+             int id = (int)teste;
+             StaticId = id;
 
-             string titulo = "Nova consulta";
-             string message = "Criar novaconsulta ?";
+             var titulo = "Nova consulta";
+             var message = "Criar nova consulta ?";
                          
              
-             MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+             var buttons = MessageBoxButtons.YesNo;
              var result = MessageBox.Show(message, titulo, buttons);
              if (result == DialogResult.Yes)
              {
-                 DatasDisponiveis datasDisponiveis = new DatasDisponiveis();
-                 datasDisponiveis.Show();
+                 var agenda = new Agenda.Agenda();
+                 agenda.Show();
                  this.Close();
              }
         }

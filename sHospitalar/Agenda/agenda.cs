@@ -1,14 +1,21 @@
 ﻿using System;
+using System.Linq;
 using System.Windows.Forms;
+using sHospitalar.Agenda.UCs.UC_ContainerDia;
+using sHospitalar.Agenda.UCs.UC_ContainerDiaBranco;
+using sHospitalar.escolherHora;
+using sHospitalar.escolherHora.UCs;
+using sHospitalar.pesquisarUtente;
 
-namespace sHospitalar
+namespace sHospitalar.Agenda
 {
-    public partial class DatasDisponiveis : Form
+    public partial class Agenda : Form
     {
-        int month, year;
+        public int Month;
+        public int Year;
         public static int static_month, static_year;
         
-        public DatasDisponiveis()
+        public Agenda()
         {
             InitializeComponent();
         }
@@ -16,70 +23,83 @@ namespace sHospitalar
         private void datas_disponiveis_Load(object sender, EventArgs e)
         {
 
-            DateTime now = DateTime.Now;
-            month = now.Month;
-            year = now.Year;
-            MostrarDias(month, year);
+            var now = DateTime.Now;
+            Month = now.Month;
+            Year = now.Year;
+            MostrarDias(Month, Year);
         }
 
+        public void CloseAgenda()
+        {
+            this.Close();
+        }
+        
+        
         private void MostrarDias(int month, int year)
         {
             static_month = month;
             static_year = year;
             dayContainer.Controls.Clear();
-            string nomeMesExtenso = new DateTime(year, month, 1).ToString("MMMM");
+            var nomeMesExtenso = new DateTime(year, month, 1).ToString("MMMM");
             
             
             nomeMesExtenso = char.ToUpper(nomeMesExtenso[0]) + nomeMesExtenso.Substring(1);
 
             labelMesAno.Text = nomeMesExtenso + " " + year;
             
-            DateTime inicioMes = new DateTime(year, month, 1);
+            var inicioMes = new DateTime(year, month, 1);
 
-            int totalDiasDoMes = DateTime.DaysInMonth(year, month);
+            var totalDiasDoMes = DateTime.DaysInMonth(year, month);
 
-            int diaDaSemana = Convert.ToInt32(inicioMes.DayOfWeek.ToString("d"));
+            var diaDaSemana = Convert.ToInt32(inicioMes.DayOfWeek.ToString("d"));
             
-            for (int i = 0; i < diaDaSemana; i++)
+            for (var i = 0; i < diaDaSemana; i++)
             {
-                UC_ContinainerBranco ucblank = new UC_ContinainerBranco();
-                dayContainer.Controls.Add(ucblank);
+                var ubBranco = new UcContainerBranco();
+                dayContainer.Controls.Add(ubBranco);
             }
 
-            for (int i = 1; i <= totalDiasDoMes; i++)
+            for (var i = 1; i <= totalDiasDoMes; i++)
             {
-                UC_ContainerDias ucdays = new UC_ContainerDias();
-                ucdays.days(i);
+                var ucdays = new UcContainerDia();
+                ucdays.Days(i);
                 dayContainer.Controls.Add(ucdays);
             }
         }
 
         private void anteriorButton_Click(object sender, EventArgs e)
         {
-            if (month != 1)
+            if (Month != 1)
             {
-                month--;
+                Month--;
             }
             else
             {
-                month = 12;
-                year--;
+                Month = 12;
+                Year--;
             }
-            MostrarDias(month, year);
+            MostrarDias(Month, Year);
         }
 
         private void seguinteButton_Click(object sender, EventArgs e)
         {
-            if (month != 12)
+            if (Month != 12)
             {
-                month++;
+                Month++;
             }
             else
             {
-                month = 1;
-                year++;
+                Month = 1;
+                Year++;
             }
-            MostrarDias(month, year);
+            MostrarDias(Month, Year);
+        }
+
+        private void Agenda_FormClosed(object sender, FormClosedEventArgs e)
+        {
+
+            var pesquisar_utente = new PesquisarUtente();
+            pesquisar_utente.Show();
 
         }
     }
