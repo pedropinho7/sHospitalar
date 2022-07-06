@@ -138,9 +138,10 @@ namespace sHospitalar
             // 
             // labelMesAno
             // 
+            this.labelMesAno.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
             this.labelMesAno.AutoSize = true;
             this.labelMesAno.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelMesAno.Location = new System.Drawing.Point(434, 9);
+            this.labelMesAno.Location = new System.Drawing.Point(429, 9);
             this.labelMesAno.Name = "labelMesAno";
             this.labelMesAno.Size = new System.Drawing.Size(105, 25);
             this.labelMesAno.TabIndex = 10;
@@ -150,6 +151,7 @@ namespace sHospitalar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1073, 791);
             this.Controls.Add(this.labelMesAno);
             this.Controls.Add(this.labelDomingo);
@@ -162,9 +164,9 @@ namespace sHospitalar
             this.Controls.Add(this.labelQuarta);
             this.Controls.Add(this.labelTerca);
             this.Controls.Add(this.labelSegunda);
+            this.Location = new System.Drawing.Point(15, 15);
             this.Name = "DatasDisponiveis";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "datas_disponiveis";
             this.Load += new System.EventHandler(this.datas_disponiveis_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

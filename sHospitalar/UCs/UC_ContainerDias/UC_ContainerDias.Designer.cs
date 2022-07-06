@@ -58,6 +58,7 @@ namespace sHospitalar
             this.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.Name = "UC_ContainerDias";
             this.Size = new System.Drawing.Size(123, 106);
+            this.Click += new System.EventHandler(this.UC_ContainerDias_Click);
             this.ResumeLayout(false);
             this.PerformLayout();
         }

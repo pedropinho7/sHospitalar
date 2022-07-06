@@ -46,9 +46,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Agenda\datas_disponiveis.cs" />
+    <Compile Include="Agenda\datas_disponiveis.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Agenda\datas_disponiveis.Designer.cs" />
-    <Compile Include="criarConsulta\criar_Consulta.cs" />
+    <Compile Include="criarConsulta\criar_Consulta.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="criarConsulta\criar_Consulta.Designer.cs" />
     <Compile Include="pesquisarUtente\pesquisar_Utente.cs">
       <SubType>Form</SubType>
@@ -65,9 +69,13 @@
     <Compile Include="MainPage\MainPage.Designer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UCs\UC_ContainerDias\UC_ContainerDias.cs" />
+    <Compile Include="UCs\UC_ContainerDias\UC_ContainerDias.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="UCs\UC_ContainerDias\UC_ContainerDias.Designer.cs" />
-    <Compile Include="UCs\UC_ContinainerBranco\UC_ContinainerBranco.cs" />
+    <Compile Include="UCs\UC_ContinainerBranco\UC_ContinainerBranco.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="UCs\UC_ContinainerBranco\UC_ContinainerBranco.Designer.cs" />
     <EmbeddedResource Include="Agenda\datas_disponiveis.resx" />
     <EmbeddedResource Include="criarConsulta\criar_Consulta.resx" />

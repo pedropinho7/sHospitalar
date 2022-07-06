@@ -6,6 +6,8 @@ namespace sHospitalar
     public partial class DatasDisponiveis : Form
     {
         int month, year;
+        public static int static_month, static_year;
+        
         public DatasDisponiveis()
         {
             InitializeComponent();
@@ -22,6 +24,8 @@ namespace sHospitalar
 
         private void MostrarDias(int month, int year)
         {
+            static_month = month;
+            static_year = year;
             dayContainer.Controls.Clear();
             string nomeMesExtenso = new DateTime(year, month, 1).ToString("MMMM");
             
@@ -73,7 +77,7 @@ namespace sHospitalar
             else
             {
                 month = 1;
-                month++;
+                year++;
             }
             MostrarDias(month, year);
 

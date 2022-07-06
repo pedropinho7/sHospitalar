@@ -7,6 +7,7 @@ namespace sHospitalar
 {
     public partial class pesquisar_Utente : Form
     {
+        public static int static_ID;
         public pesquisar_Utente()
         {
             InitializeComponent();
@@ -47,10 +48,10 @@ namespace sHospitalar
              gridResultadosPesquisa.Rows[indexID].Selected = true;
              var teste = gridResultadosPesquisa[0, indexID].Value;
              int ID = (int)teste;
-
+             static_ID = ID;
 
              string titulo = "Nova consulta";
-             string message = "Criar nova consulta ?";
+             string message = "Criar novaconsulta ?";
                          
              
              MessageBoxButtons buttons = MessageBoxButtons.YesNo;

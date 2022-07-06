@@ -26,6 +26,7 @@ namespace Data
                 command.Parameters.AddWithValue("@age_input", age);
                 command.Parameters.AddWithValue("@sexo_input", sexo);
                 command.ExecuteNonQuery();
+                command.Dispose();
                 connection.Close();
             }
         }
@@ -50,6 +51,8 @@ namespace Data
                 }
                 SqlDataAdapter adapter = new SqlDataAdapter(command);
                 adapter.Fill(dt);
+                //ADICIONEI ISTO RECENTEMENTE, SE HOUVER PROBLEMAS YEAH
+                command.Dispose();
                 return dt;
             }
         }
@@ -66,6 +69,8 @@ namespace Data
                 command.Parameters.AddWithValue("@ID_input", Convert.ToInt32(ID));
                 SqlDataAdapter adapter = new SqlDataAdapter(command);
                 adapter.Fill(dt);
+                //ADICIONEI ISTO RECENTEMENTE, SE HOUVER PROBLEMAS YEAH
+                command.Dispose();
                 return dt;
             }
         }
