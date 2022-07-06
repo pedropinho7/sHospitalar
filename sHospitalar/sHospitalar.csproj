@@ -46,10 +46,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Agenda\datas_disponiveis.cs">
+    <Compile Include="Agenda\agenda.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Agenda\datas_disponiveis.Designer.cs" />
+    <Compile Include="Agenda\agenda.Designer.cs" />
     <Compile Include="criarConsulta\criar_Consulta.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -77,7 +77,7 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UCs\UC_ContinainerBranco\UC_ContinainerBranco.Designer.cs" />
-    <EmbeddedResource Include="Agenda\datas_disponiveis.resx" />
+    <EmbeddedResource Include="Agenda\agenda.resx" />
     <EmbeddedResource Include="criarConsulta\criar_Consulta.resx" />
     <EmbeddedResource Include="pesquisarUtente\pesquisar_Utente.resx" />
     <EmbeddedResource Include="criarUtente\criar_Utente.resx" />
