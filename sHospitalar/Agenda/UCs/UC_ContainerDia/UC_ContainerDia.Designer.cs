@@ -46,6 +46,7 @@ namespace sHospitalar.Agenda.UCs.UC_ContainerDia
             this.labelDiaTexto.Size = new System.Drawing.Size(36, 25);
             this.labelDiaTexto.TabIndex = 0;
             this.labelDiaTexto.Text = "00";
+            this.labelDiaTexto.Click += new System.EventHandler(this.labelDiaTexto_Click);
             // 
             // UcContainerDia
             // 
@@ -60,7 +61,7 @@ namespace sHospitalar.Agenda.UCs.UC_ContainerDia
             this.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.Name = "UcContainerDia";
             this.Size = new System.Drawing.Size(123, 106);
-            this.Click += new System.EventHandler(this.UC_ContainerDias_Click);
+            this.Click += new System.EventHandler(this.UcContainerDia_Click);
             this.ResumeLayout(false);
             this.PerformLayout();
         }

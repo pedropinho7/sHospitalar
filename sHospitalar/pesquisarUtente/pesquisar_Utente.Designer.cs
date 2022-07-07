@@ -46,6 +46,7 @@ namespace sHospitalar.pesquisarUtente
             this.utenteNameBox.Name = "utenteNameBox";
             this.utenteNameBox.Size = new System.Drawing.Size(401, 20);
             this.utenteNameBox.TabIndex = 0;
+            this.utenteNameBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.utenteNameBox_KeyDown);
             // 
             // labelNomeUtente
             // 
@@ -53,7 +54,7 @@ namespace sHospitalar.pesquisarUtente
             this.labelNomeUtente.Name = "labelNomeUtente";
             this.labelNomeUtente.Size = new System.Drawing.Size(126, 12);
             this.labelNomeUtente.TabIndex = 1;
-            this.labelNomeUtente.Text = "Nome do Utente";
+            this.labelNomeUtente.Text = "Nome do utente";
             // 
             // labelIDUtente
             // 
@@ -61,7 +62,7 @@ namespace sHospitalar.pesquisarUtente
             this.labelIDUtente.Name = "labelIDUtente";
             this.labelIDUtente.Size = new System.Drawing.Size(57, 21);
             this.labelIDUtente.TabIndex = 2;
-            this.labelIDUtente.Text = "ID Utente";
+            this.labelIDUtente.Text = "ID utente";
             // 
             // utenteIDBox
             // 
@@ -69,6 +70,7 @@ namespace sHospitalar.pesquisarUtente
             this.utenteIDBox.Name = "utenteIDBox";
             this.utenteIDBox.Size = new System.Drawing.Size(102, 20);
             this.utenteIDBox.TabIndex = 3;
+            this.utenteIDBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.utenteIDBox_KeyDown);
             // 
             // searchButton
             // 
@@ -92,7 +94,7 @@ namespace sHospitalar.pesquisarUtente
             this.gridResultadosPesquisa.TabIndex = 5;
             this.gridResultadosPesquisa.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridResultadosPesquisa_CellDoubleClick);
             // 
-            // pesquisar_Utente
+            // PesquisarUtente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;

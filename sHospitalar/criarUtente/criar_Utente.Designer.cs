@@ -76,7 +76,7 @@ namespace sHospitalar.criarUtente
             this.criarUtenteButton.Name = "criarUtenteButton";
             this.criarUtenteButton.Size = new System.Drawing.Size(123, 53);
             this.criarUtenteButton.TabIndex = 4;
-            this.criarUtenteButton.Text = "Criar utente";
+            this.criarUtenteButton.Text = "Criar _utentes";
             this.criarUtenteButton.UseVisualStyleBackColor = true;
             this.criarUtenteButton.Click += new System.EventHandler(this.criarUtenteButton_Click);
             // 
@@ -111,7 +111,7 @@ namespace sHospitalar.criarUtente
             this.Controls.Add(this.labelFullName);
             this.Controls.Add(this.utenteNameBox);
             this.Name = "CriarUtente";
-            this.Text = "Criar novo utente";
+            this.Text = "Criar novo _utentes";
             this.ResumeLayout(false);
             this.PerformLayout();
         }

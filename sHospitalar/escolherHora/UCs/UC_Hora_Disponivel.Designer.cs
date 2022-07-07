@@ -41,6 +41,7 @@
             this.labelHoraHora.TabIndex = 0;
             this.labelHoraHora.Text = "00 - 24";
             this.labelHoraHora.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelHoraHora.Click += new System.EventHandler(this.labelHoraHora_Click);
             // 
             // UcHoraDisponivel
             // 
@@ -50,7 +51,6 @@
             this.Controls.Add(this.labelHoraHora);
             this.Name = "UcHoraDisponivel";
             this.Size = new System.Drawing.Size(196, 31);
-            this.Click += new System.EventHandler(this.UcHoraDisponivel_Click);
             this.ResumeLayout(false);
             this.PerformLayout();
         }

@@ -70,6 +70,8 @@
     <Compile Include="escolherHora\UCs\UC_Hora_Disponivel.Designer.cs">
       <DependentUpon>UC_Hora_Disponivel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Marcacoes.cs" />
+    <Compile Include="Medicos.cs" />
     <Compile Include="NovaConsulta\NovaConsulta.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -91,6 +93,7 @@
     <Compile Include="MainPage\MainPage.Designer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utentes.cs" />
     <EmbeddedResource Include="Agenda\agenda.resx" />
     <EmbeddedResource Include="Agenda\UCs\UC_ContainerDia\UC_ContainerDia.resx" />
     <EmbeddedResource Include="Agenda\UCs\UC_ContainerDiaBranco\UC_ContinainerBranco.resx" />

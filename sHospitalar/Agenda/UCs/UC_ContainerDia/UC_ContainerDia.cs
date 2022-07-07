@@ -7,7 +7,8 @@ namespace sHospitalar.Agenda.UCs.UC_ContainerDia
 
     public partial class UcContainerDia : UserControl
     {
-        public static int StaticDay;
+        public Marcacoes marcacao = Agenda.marcacao;
+        
         public UcContainerDia()
         {
             InitializeComponent();
@@ -15,15 +16,23 @@ namespace sHospitalar.Agenda.UCs.UC_ContainerDia
 
         public void Days(int numday)
         {
-            labelDiaTexto.Text = numday.ToString();
+            this.labelDiaTexto.Text = numday.ToString();
         }
 
-        private void UC_ContainerDias_Click(object sender, EventArgs e)
+        public void MostrarHora()
         {
-            StaticDay = Convert.ToInt32(labelDiaTexto.Text); 
-            var novaConsulta = new EscolherHora();
-            novaConsulta.Show();
+            marcacao.Dia = Convert.ToInt32(labelDiaTexto.Text); 
+            var escolherHora = new EscolherHora();
+            escolherHora.Show();
+        }
+        private void UcContainerDia_Click(object sender, EventArgs e)
+        {
+            this.MostrarHora();
         }
 
+        private void labelDiaTexto_Click(object sender, EventArgs e)
+        {
+            this.MostrarHora();
+        }
     }
 }

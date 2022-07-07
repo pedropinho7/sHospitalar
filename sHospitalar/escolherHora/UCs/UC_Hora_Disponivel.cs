@@ -5,6 +5,8 @@ namespace sHospitalar.escolherHora.UCs
 {
     public partial class UcHoraDisponivel : UserControl
     {
+        public static Marcacoes marcacao = Agenda.Agenda.marcacao;
+
         public UcHoraDisponivel()
         {
             InitializeComponent();
@@ -12,15 +14,16 @@ namespace sHospitalar.escolherHora.UCs
 
         public void Horas(int horaInicio, int horaFim)
         {
-            var primeiraHora = horaInicio <= 9 ? "0" + horaInicio.ToString() : horaInicio.ToString();
-            var segundaHora = horaFim <= 9 ? "0" + horaFim.ToString() : horaFim.ToString();
-            labelHoraHora.Text = $@"{primeiraHora}h - {segundaHora}h";
+            var _primeiraHora = horaInicio <= 9 ? "0" + horaInicio.ToString() : horaInicio.ToString();
+            var _segundaHora = horaFim <= 9 ? "0" + horaFim.ToString() : horaFim.ToString();
+            marcacao.Hora = Convert.ToInt32(_primeiraHora);
+            labelHoraHora.Text = $@"{_primeiraHora}h - {_segundaHora}h";
         }
 
-        private void UcHoraDisponivel_Click(object sender, EventArgs e)
+        private void labelHoraHora_Click(object sender, EventArgs e)
         {
-            
+            var novaconsulta = new NovaConsulta.NovaConsulta();
+            novaconsulta.Show();
         }
     }
-
 }

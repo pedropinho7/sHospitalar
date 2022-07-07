@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data;
+using System.Security.Cryptography;
 using System.Windows.Forms;
 using sHospitalar.criarUtente;
 using sHospitalar.Data;
@@ -8,32 +9,41 @@ namespace sHospitalar.pesquisarUtente
 {
     public partial class PesquisarUtente : Form
     {
-        public static int StaticId;
+        public static Utentes utente = new Utentes();
+
         public PesquisarUtente()
         {
             InitializeComponent();
         }
 
-        public void searchButton_Click(object sender, EventArgs e)
+        public void search_Utente(Utentes utentes)
         {
-            Db database = new Db();
+            var database = new Db();
             DataTable dt = null;
-            if (string.IsNullOrEmpty(utenteIDBox.Text))
+            
+            if (String.IsNullOrEmpty((string)utenteIDBox.Text))
             {
-                dt = database.PesquisarUtentePorNome(gridResultadosPesquisa, utenteNameBox.Text);
+                utenteIDBox.Text = "0";
             }
-            else if (!string.IsNullOrEmpty(utenteIDBox.Text))
+
+            utentes.Id = int.Parse(utenteIDBox.Text);;
+
+            if (utentes.Id > 0)
             {
-                dt = database.PesquisarUtentePorId(gridResultadosPesquisa, utenteIDBox.Text);
+                dt = database.MostrarDadosEmGrid(utentes.Id);
+            }
+            else
+            {
+                dt = database.MostrarDadosEmGrid(utentes.Nome);
             }
 
             gridResultadosPesquisa.DataSource = dt;
 
-
+            // ReSharper disable once PossibleNullReferenceException
             if (dt.Rows.Count == 0)
             {
                 var titulo = "Não foram encontrados resultados.";
-                var message = "Criar novo utente?";
+                var message = "Criar novo _utentes?";
                 var buttons = MessageBoxButtons.YesNo;
                 var result = MessageBox.Show(message, titulo, buttons);
                 if (result == DialogResult.Yes)
@@ -43,26 +53,47 @@ namespace sHospitalar.pesquisarUtente
             }
         }
 
+        public void searchButton_Click(object sender, EventArgs e)
+        {
+            search_Utente(utente);
+        }
+
         private void gridResultadosPesquisa_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-             var indexId = gridResultadosPesquisa.CurrentCell.RowIndex;
-             gridResultadosPesquisa.Rows[indexId].Selected = true;
-             var teste = gridResultadosPesquisa[0, indexId].Value;
-             int id = (int)teste;
-             StaticId = id;
+            utente.Nome = gridResultadosPesquisa["Nome", gridResultadosPesquisa.CurrentCell.RowIndex]
+                .Value.ToString();
+            
+            gridResultadosPesquisa.Rows[gridResultadosPesquisa.CurrentCell.RowIndex].Selected = true;
 
-             var titulo = "Nova consulta";
-             var message = "Criar nova consulta ?";
-                         
-             
-             var buttons = MessageBoxButtons.YesNo;
-             var result = MessageBox.Show(message, titulo, buttons);
-             if (result == DialogResult.Yes)
-             {
-                 var agenda = new Agenda.Agenda();
-                 agenda.Show();
-                 this.Close();
-             }
+
+            var titulo = "Nova consulta";
+            var message = "Criar nova consulta ?";
+            var buttons = MessageBoxButtons.YesNo;
+            var result = MessageBox.Show(message, titulo, buttons);
+
+
+            if (result == DialogResult.Yes)
+            {
+                var agenda = new Agenda.Agenda();
+                agenda.Show();
+                this.Close();
+            }
+        }
+
+        private void utenteNameBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                search_Utente(utente);
+            }
+        }
+
+        private void utenteIDBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                search_Utente(utente);
+            }
         }
     }
 }

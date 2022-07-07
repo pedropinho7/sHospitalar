@@ -11,9 +11,7 @@ namespace sHospitalar.Agenda
 {
     public partial class Agenda : Form
     {
-        public int Month;
-        public int Year;
-        public static int static_month, static_year;
+        public static Marcacoes marcacao = new Marcacoes();
         
         public Agenda()
         {
@@ -22,11 +20,10 @@ namespace sHospitalar.Agenda
 
         private void datas_disponiveis_Load(object sender, EventArgs e)
         {
-
             var now = DateTime.Now;
-            Month = now.Month;
-            Year = now.Year;
-            MostrarDias(Month, Year);
+            marcacao.Mes = now.Month;
+            marcacao.Ano = now.Year;
+            MostrarDias();
         }
 
         public void CloseAgenda()
@@ -35,21 +32,20 @@ namespace sHospitalar.Agenda
         }
         
         
-        private void MostrarDias(int month, int year)
+        private void MostrarDias()
         {
-            static_month = month;
-            static_year = year;
+            
             dayContainer.Controls.Clear();
-            var nomeMesExtenso = new DateTime(year, month, 1).ToString("MMMM");
+            var nomeMesExtenso = new DateTime(marcacao.Ano, marcacao.Mes, 1).ToString("MMMM");
             
             
             nomeMesExtenso = char.ToUpper(nomeMesExtenso[0]) + nomeMesExtenso.Substring(1);
 
-            labelMesAno.Text = nomeMesExtenso + " " + year;
+            labelMesAno.Text = nomeMesExtenso + " " + marcacao.Ano;
             
-            var inicioMes = new DateTime(year, month, 1);
+            var inicioMes = new DateTime(marcacao.Ano, marcacao.Mes, 1);
 
-            var totalDiasDoMes = DateTime.DaysInMonth(year, month);
+            var totalDiasDoMes = DateTime.DaysInMonth(marcacao.Ano, marcacao.Mes);
 
             var diaDaSemana = Convert.ToInt32(inicioMes.DayOfWeek.ToString("d"));
             
@@ -69,37 +65,32 @@ namespace sHospitalar.Agenda
 
         private void anteriorButton_Click(object sender, EventArgs e)
         {
-            if (Month != 1)
-            {
-                Month--;
-            }
+            if (marcacao.Mes != 1)
+                marcacao.Mes--;
             else
             {
-                Month = 12;
-                Year--;
+                marcacao.Mes = 12;
+                marcacao.Ano--;
             }
-            MostrarDias(Month, Year);
+            MostrarDias();
         }
 
         private void seguinteButton_Click(object sender, EventArgs e)
         {
-            if (Month != 12)
-            {
-                Month++;
-            }
+            if (marcacao.Mes != 12)
+                marcacao.Mes++;
             else
             {
-                Month = 1;
-                Year++;
+                marcacao.Mes = 1;
+                marcacao.Ano++;
             }
-            MostrarDias(Month, Year);
+            MostrarDias();
         }
 
         private void Agenda_FormClosed(object sender, FormClosedEventArgs e)
         {
-
-            var pesquisar_utente = new PesquisarUtente();
-            pesquisar_utente.Show();
+            var pesquisarUtente = new PesquisarUtente();
+            pesquisarUtente.Show();
 
         }
     }
