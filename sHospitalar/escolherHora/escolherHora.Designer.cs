@@ -1,4 +1,4 @@
-﻿namespace sHospitalar.escolherHora
+﻿namespace Agenda.escolherHora
 {
     partial class EscolherHora
     {
@@ -54,6 +54,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(214, 447);
             this.Controls.Add(this.flowLayoutPanel1);

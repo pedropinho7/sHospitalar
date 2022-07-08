@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace sHospitalar.pesquisarUtente
+namespace Agenda.pesquisarUtente
 {
     partial class PesquisarUtente
     {

@@ -1,71 +1,58 @@
-﻿using System;
-using System.Data;
-using System.Security.Cryptography;
-using System.Windows.Forms;
-using sHospitalar.criarUtente;
-using sHospitalar.Data;
+﻿#region
 
-namespace sHospitalar.pesquisarUtente
+using System;
+using System.Data;
+using System.Windows.Forms;
+using Agenda.criarUtente;
+using Agenda.Data;
+
+#endregion
+
+namespace Agenda.pesquisarUtente
 {
     public partial class PesquisarUtente : Form
     {
-        public static Utentes utente = new Utentes();
+        public static Utentes utente = Db.utente;
 
         public PesquisarUtente()
         {
             InitializeComponent();
         }
 
-        public void search_Utente(Utentes utentes)
+        public void search_Utente()
         {
             var database = new Db();
-            DataTable dt = null;
-            
-            if (String.IsNullOrEmpty((string)utenteIDBox.Text))
-            {
-                utenteIDBox.Text = "0";
-            }
+            DataTable dt;
 
-            utentes.Id = int.Parse(utenteIDBox.Text);;
-
-            if (utentes.Id > 0)
+            if (!string.IsNullOrEmpty(utenteIDBox.Text) && int.TryParse(utenteIDBox.Text, out _))
             {
-                dt = database.MostrarDadosEmGrid(utentes.Id);
+                dt = database.MostrarDadosEmGrid(int.Parse(utenteIDBox.Text));
+                gridResultadosPesquisa.DataSource = dt;
             }
             else
             {
-                dt = database.MostrarDadosEmGrid(utentes.Nome);
+                dt = database.MostrarDadosEmGrid(utenteNameBox.Text);
+                gridResultadosPesquisa.DataSource = dt;
             }
 
-            gridResultadosPesquisa.DataSource = dt;
-
-            // ReSharper disable once PossibleNullReferenceException
             if (dt.Rows.Count == 0)
             {
                 var titulo = "Não foram encontrados resultados.";
-                var message = "Criar novo _utentes?";
+                var message = "Criar novo utente?";
                 var buttons = MessageBoxButtons.YesNo;
                 var result = MessageBox.Show(message, titulo, buttons);
-                if (result == DialogResult.Yes)
-                {
-                    new CriarUtente().ShowDialog();
-                }
+                if (result == DialogResult.Yes) new CriarUtente().ShowDialog();
             }
         }
 
         public void searchButton_Click(object sender, EventArgs e)
         {
-            search_Utente(utente);
+            search_Utente();
         }
 
         private void gridResultadosPesquisa_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            utente.Nome = gridResultadosPesquisa["Nome", gridResultadosPesquisa.CurrentCell.RowIndex]
-                .Value.ToString();
-            
             gridResultadosPesquisa.Rows[gridResultadosPesquisa.CurrentCell.RowIndex].Selected = true;
-
-
             var titulo = "Nova consulta";
             var message = "Criar nova consulta ?";
             var buttons = MessageBoxButtons.YesNo;
@@ -74,26 +61,20 @@ namespace sHospitalar.pesquisarUtente
 
             if (result == DialogResult.Yes)
             {
-                var agenda = new Agenda.Agenda();
+                var agenda = new sHospitalar.Agenda();
                 agenda.Show();
-                this.Close();
+                Close();
             }
         }
 
         private void utenteNameBox_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
-            {
-                search_Utente(utente);
-            }
+            if (e.KeyCode == Keys.Enter) search_Utente();
         }
 
         private void utenteIDBox_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
-            {
-                search_Utente(utente);
-            }
+            if (e.KeyCode == Keys.Enter) search_Utente();
         }
     }
 }

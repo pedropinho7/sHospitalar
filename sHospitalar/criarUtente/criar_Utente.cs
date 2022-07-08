@@ -1,13 +1,18 @@
-﻿using System;
-using System.Windows.Forms;
-using sHospitalar.Data;
-using sHospitalar.pesquisarUtente;
+﻿#region
 
-namespace sHospitalar.criarUtente
+using System;
+using System.Windows.Forms;
+using Agenda.Data;
+using Agenda.pesquisarUtente;
+
+#endregion
+
+namespace Agenda.criarUtente
 {
     public partial class CriarUtente : Form
     {
-        private Utentes _utentes = PesquisarUtente.utente;
+        private readonly Utentes _utentes = PesquisarUtente.utente;
+
         public CriarUtente()
         {
             InitializeComponent();
@@ -23,7 +28,7 @@ namespace sHospitalar.criarUtente
                 _utentes.Sexo = Convert.ToChar(sexBox.Text);
                 database.CriarUtente(_utentes);
                 MessageBox.Show($@"Criado _utentes {_utentes.Nome}.");
-                this.Close();
+                Close();
             }
             else
             {

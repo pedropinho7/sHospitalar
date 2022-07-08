@@ -1,21 +1,23 @@
-﻿using System;
+﻿#region
+
+using System;
 using System.Data;
 using System.Data.SqlClient;
-using System.Windows.Forms;
-using sHospitalar.pesquisarUtente;
 
-namespace sHospitalar.Data
+#endregion
+
+namespace Agenda.Data
 {
     public class Db
     {
+        public static Utentes utente = new Utentes();
         public string connectionString = "Server=(localdb)\\firstdb;Integrated Security=true;";
 
         public void CriarUtente(Utentes utente)
         {
-            using (var connection = GetConnection()) 
+            using (var connection = GetConnection())
             using (var command = new SqlCommand())
             {
-
                 command.Connection = connection;
                 command.CommandText =
                     "INSERT INTO UTENTES (Nome, Idade, Sexo) VALUES (@nome_input, @age_input, @sexo_input)";
@@ -28,17 +30,16 @@ namespace sHospitalar.Data
                 connection.Close();
             }
         }
-        
+
         public SqlConnection GetConnection()
         {
-            SqlConnection connection = new SqlConnection(connectionString);
-            if (connection.State == ConnectionState.Closed)                
+            var connection = new SqlConnection(connectionString);
+            if (connection.State == ConnectionState.Closed)
                 connection.Open();
 
-            return connection;            
+            return connection;
         }
-        
-        
+
         public SqlCommand ComandoPesquisarUtente(int id)
         {
             var connection = GetConnection();
@@ -47,7 +48,6 @@ namespace sHospitalar.Data
                 command.Connection = connection;
                 command.CommandText = "Select * From UTENTES Where ID = @ID_input";
                 command.Parameters.AddWithValue("@ID_input", Convert.ToInt32(id));
-                connection.Close();
                 return command;
             }
         }
@@ -68,6 +68,7 @@ namespace sHospitalar.Data
                     // Yeah, procurar melhor maneira de fazer isto xD
                     command.CommandText = "Select * From UTENTES Where 1=0";
                 }
+
                 connection.Close();
                 return command;
             }
@@ -78,20 +79,36 @@ namespace sHospitalar.Data
             using (var dt = new DataTable("utente"))
             using (var command = ComandoPesquisarUtente(nome))
             {
-                SqlDataAdapter adapter = new SqlDataAdapter(command);
+                var adapter = new SqlDataAdapter(command);
                 adapter.Fill(dt);
+                foreach (DataRow row in dt.Rows)
+                {
+                    utente.Nome = row["Nome"].ToString();
+                    utente.Id = int.Parse(row["ID"].ToString());
+                    utente.Sexo = char.Parse(row["Sexo"].ToString());
+                    utente.Idade = int.Parse(row["Idade"].ToString());
+                }
+
                 command.Dispose();
                 return dt;
             }
         }
-        
+
         public DataTable MostrarDadosEmGrid(int id)
         {
             using (var dt = new DataTable("utente"))
             using (var command = ComandoPesquisarUtente(id))
             {
-                SqlDataAdapter adapter = new SqlDataAdapter(command);
+                var adapter = new SqlDataAdapter(command);
                 adapter.Fill(dt);
+                foreach (DataRow row in dt.Rows)
+                {
+                    utente.Nome = row["Nome"].ToString();
+                    utente.Id = int.Parse(row["ID"].ToString());
+                    utente.Sexo = char.Parse(row["Sexo"].ToString());
+                    utente.Idade = int.Parse(row["Idade"].ToString());
+                }
+
                 command.Dispose();
                 return dt;
             }

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace sHospitalar.criarUtente
+namespace Agenda.criarUtente
 {
     partial class CriarUtente
     {

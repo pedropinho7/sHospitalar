@@ -1,8 +1,12 @@
-﻿using System;
-using System.Windows.Forms;
-using sHospitalar.escolherHora.UCs;
+﻿#region
 
-namespace sHospitalar.escolherHora
+using System;
+using System.Windows.Forms;
+using Agenda.escolherHora.UC_HoraDisponivel;
+
+#endregion
+
+namespace Agenda.escolherHora
 {
     public partial class EscolherHora : Form
     {
@@ -30,7 +34,7 @@ namespace sHospitalar.escolherHora
 
         public void EscolherHora_Deactivate(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
     }
 }

@@ -1,43 +1,36 @@
+#region
+
 using System;
-using System.Data;
-using System.Data.SqlClient;
-using System.Runtime.InteropServices;
+using System.Runtime.CompilerServices;
 using System.Windows.Forms;
-using sHospitalar.Agenda.UCs.UC_ContainerDia;
-using sHospitalar.Data;
-using sHospitalar.escolherHora;
-using sHospitalar.escolherHora.UCs;
-using sHospitalar.pesquisarUtente;
+using Agenda;
+using Agenda.escolherHora.UC_HoraDisponivel;
+using Agenda.pesquisarUtente;
+
+#endregion
 
 namespace sHospitalar.NovaConsulta
 {
     public partial class NovaConsulta : Form
     {
-        public Utentes utente = PesquisarUtente.utente;
         public Marcacoes Marcacao = UcHoraDisponivel.marcacao;
+        public Utentes utente = PesquisarUtente.utente;
+        
         public NovaConsulta()
         {
             InitializeComponent();
-            string message =
-                $"O utente {utente.Nome}, com o ID {utente.Id} tem consulta dia {Marcacao.Dia}-{Marcacao.Mes}-{Marcacao.Ano} às {Marcacao.Hora} horas.";
-            labeTeste.Text = message;
-            
-            //SEEMS WORKING, CONTINUAR AMANHA.
         }
 
-
-
-        private void labelID_TextChanged(object sender, EventArgs e)
+        private void NovaConsulta_Load(object sender, EventArgs e)
         {
             nomeBox.Text = utente.Nome;
+            IdBox.Text = utente.Id.ToString();
+            ageBox.Text = utente.Idade.ToString();
+            sexoBox.Text = utente.Sexo.ToString();
+            diaBox.Text = Marcacao.Dia.ToString();
+            mesBox.Text = Marcacao.Mes.ToString();
+            anoBox.Text = Marcacao.Ano.ToString();
+            horaBox.Text = Marcacao.Hora.ToString();
         }
-
-
-
-        /*private void labelID_TextChanged(object sender, EventArgs e)
-        {
-            this.nomeBox.Clear();
-            this.nomeBox.Text = GetUtenteName();
-        }*/
     }
 }

@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using sHospitalar.pesquisarUtente;
+﻿#region
 
-namespace sHospitalar
+using System;
+using System.Windows.Forms;
+using Agenda.pesquisarUtente;
+
+#endregion
+
+namespace Agenda.MainPage
 {
     public partial class MainPage : Form
     {
@@ -20,9 +17,9 @@ namespace sHospitalar
 
         private void CriarConsultaButton_Click(object sender, EventArgs e)
         {
-            PesquisarUtente pesquisarUtente = new PesquisarUtente();
+            var pesquisarUtente = new PesquisarUtente();
             pesquisarUtente.Show();
-            this.Hide();
+            Hide();
         }
     }
 }

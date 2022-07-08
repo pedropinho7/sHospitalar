@@ -1,4 +1,4 @@
-﻿namespace sHospitalar.Agenda.UCs.UC_ContainerDiaBranco
+﻿namespace sHospitalar.UCs.UC_ContainerDiaBranco
 {
     partial class UcContainerBranco
     {

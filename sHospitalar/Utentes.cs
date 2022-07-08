@@ -1,4 +1,4 @@
-namespace sHospitalar
+namespace Agenda
 {
     public class Utentes
     {

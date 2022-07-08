@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace sHospitalar.Agenda.UCs.UC_ContainerDia
+namespace sHospitalar.UCs.UC_ContainerDia
 {
     partial class UcContainerDia
     {

@@ -1,18 +1,20 @@
-﻿using System;
-using System.Linq;
-using System.Windows.Forms;
-using sHospitalar.Agenda.UCs.UC_ContainerDia;
-using sHospitalar.Agenda.UCs.UC_ContainerDiaBranco;
-using sHospitalar.escolherHora;
-using sHospitalar.escolherHora.UCs;
-using sHospitalar.pesquisarUtente;
+﻿#region
 
-namespace sHospitalar.Agenda
+using System;
+using System.Windows.Forms;
+using Agenda;
+using Agenda.pesquisarUtente;
+using sHospitalar.UCs.UC_ContainerDia;
+using sHospitalar.UCs.UC_ContainerDiaBranco;
+
+#endregion
+
+namespace sHospitalar
 {
     public partial class Agenda : Form
     {
         public static Marcacoes marcacao = new Marcacoes();
-        
+
         public Agenda()
         {
             InitializeComponent();
@@ -28,27 +30,26 @@ namespace sHospitalar.Agenda
 
         public void CloseAgenda()
         {
-            this.Close();
+            Close();
         }
-        
-        
+
+
         private void MostrarDias()
         {
-            
             dayContainer.Controls.Clear();
             var nomeMesExtenso = new DateTime(marcacao.Ano, marcacao.Mes, 1).ToString("MMMM");
-            
-            
+
+
             nomeMesExtenso = char.ToUpper(nomeMesExtenso[0]) + nomeMesExtenso.Substring(1);
 
             labelMesAno.Text = nomeMesExtenso + " " + marcacao.Ano;
-            
+
             var inicioMes = new DateTime(marcacao.Ano, marcacao.Mes, 1);
 
             var totalDiasDoMes = DateTime.DaysInMonth(marcacao.Ano, marcacao.Mes);
 
             var diaDaSemana = Convert.ToInt32(inicioMes.DayOfWeek.ToString("d"));
-            
+
             for (var i = 0; i < diaDaSemana; i++)
             {
                 var ubBranco = new UcContainerBranco();
@@ -66,24 +67,30 @@ namespace sHospitalar.Agenda
         private void anteriorButton_Click(object sender, EventArgs e)
         {
             if (marcacao.Mes != 1)
+            {
                 marcacao.Mes--;
+            }
             else
             {
                 marcacao.Mes = 12;
                 marcacao.Ano--;
             }
+
             MostrarDias();
         }
 
         private void seguinteButton_Click(object sender, EventArgs e)
         {
             if (marcacao.Mes != 12)
+            {
                 marcacao.Mes++;
+            }
             else
             {
                 marcacao.Mes = 1;
                 marcacao.Ano++;
             }
+
             MostrarDias();
         }
 
@@ -91,7 +98,6 @@ namespace sHospitalar.Agenda
         {
             var pesquisarUtente = new PesquisarUtente();
             pesquisarUtente.Show();
-
         }
     }
 }

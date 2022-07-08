@@ -1,6 +1,4 @@
-using System.Xml.XPath;
-
-namespace sHospitalar
+namespace Agenda
 {
     public class Marcacoes
     {

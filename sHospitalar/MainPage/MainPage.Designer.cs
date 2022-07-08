@@ -1,4 +1,4 @@
-﻿namespace sHospitalar
+﻿namespace Agenda.MainPage
 {
     partial class MainPage
     {
